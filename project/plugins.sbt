@@ -5,7 +5,7 @@ addSbtPlugin("io.spray" % "sbt-revolver" % "0.9.1")
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.3")
 
 // sbt> scapegoat
-addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.1.0")
+addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.1.1")
 
 // Publish to sonatype
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.7")

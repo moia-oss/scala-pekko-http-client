@@ -15,7 +15,7 @@ class LoggingHttpClientTest extends TestSetup {
 
   case class LoggingContext(context: String)
 
-  private implicit val canLogString: CanLog[LoggingContext] = new CanLog[LoggingContext] {
+  implicit private val canLogString: CanLog[LoggingContext] = new CanLog[LoggingContext] {
     val prevContext: String = MDC.get("context")
 
     override def logMessage(originalMsg: String, ctx: LoggingContext): String = {
@@ -32,7 +32,7 @@ class LoggingHttpClientTest extends TestSetup {
   }
 
   private val theLogger: LoggerTakingImplicit[LoggingContext] = Logger.takingImplicit(LoggerFactory.getLogger(getClass.getName))
-  private implicit val ctx: LoggingContext                    = LoggingContext("Logging Context")
+  implicit private val ctx: LoggingContext                    = LoggingContext("Logging Context")
 
   classOf[LoggingHttpClient[LoggingContext]].getSimpleName should {
     "take a customer logger" in {

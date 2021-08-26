@@ -5,9 +5,8 @@ import org.scalatest.Assertions
 import scala.concurrent.duration.{Duration, DurationLong, FiniteDuration}
 import scala.concurrent.{Await, Future, TimeoutException}
 
-/** This is a helper similar to `OptionValues`.
-  * It awaits a `Future` value within an accepted duration.
-  * That is much nicer that `ScalaFutures` with their stupid patience config!
+/** This is a helper similar to `OptionValues`. It awaits a `Future` value within an accepted duration. That is much nicer that `ScalaFutures` with their stupid
+  * patience config!
   *
   * Example:
   *
@@ -18,7 +17,7 @@ import scala.concurrent.{Await, Future, TimeoutException}
   * ```
   */
 trait FutureValues extends Assertions {
-  protected implicit val defaultAwaitDuration: FiniteDuration = 1000.millis
+  implicit protected val defaultAwaitDuration: FiniteDuration = 1000.millis
 
   implicit class WithFutureValue[T](future: Future[T]) {
     def futureValue(implicit awaitDuration: Duration): T =

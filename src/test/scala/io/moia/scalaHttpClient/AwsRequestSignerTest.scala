@@ -10,8 +10,8 @@ import org.scalatest.wordspec.AnyWordSpecLike
 import scala.concurrent.duration.{FiniteDuration, _}
 
 class AwsRequestSignerTest extends AnyWordSpecLike with Matchers with FutureValues {
-  private implicit val system: ActorSystem              = ActorSystem("test")
-  protected implicit val patienceConfig: FiniteDuration = 2.seconds
+  implicit private val system: ActorSystem              = ActorSystem("test")
+  implicit protected val patienceConfig: FiniteDuration = 2.seconds
 
   val underTest: AwsRequestSigner =
     AwsRequestSigner.fromConfig(AwsRequestSignerConfig.BasicCredentials("AKIDEXAMPLE", "secret-key", "eu-central-1"))

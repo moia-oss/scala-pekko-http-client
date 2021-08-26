@@ -30,9 +30,12 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
 
   /** Signs the given HttpRequest
     *
-    * @param request `HttpRequest` to be signed
-    * @return `Future[HttpRequest]` the signed `HttpRequest`
-    * @throws AlreadyAuthorizedException if the given `HttpRequest` already includes an "Authorize" header
+    * @param request
+    *   `HttpRequest` to be signed
+    * @return
+    *   `Future[HttpRequest]` the signed `HttpRequest`
+    * @throws AlreadyAuthorizedException
+    *   if the given `HttpRequest` already includes an "Authorize" header
     */
   def signRequest(request: HttpRequest): Future[HttpRequest] =
     if (isAlreadyAuthorized(request.headers))
@@ -53,15 +56,19 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
 
   /** Checks if the given collection of `HttpHeader`s includes one "Authorization" header
     *
-    * @param headers `Seq[HttpHeader]` headers of an Akka `HttpRequest`
-    * @return true if "Authorization" header exists
+    * @param headers
+    *   `Seq[HttpHeader]` headers of an Akka `HttpRequest`
+    * @return
+    *   true if "Authorization" header exists
     */
   private def isAlreadyAuthorized(headers: Seq[HttpHeader]): Boolean = headers.exists(_.is("authorization"))
 
   /** Constructs an `SdkHttpFullRequest` from Akka's `HttpRequest` for signing.
     *
-    * @param request HttpRequest to convert
-    * @return SdkHttpFullRequest
+    * @param request
+    *   HttpRequest to convert
+    * @return
+    *   SdkHttpFullRequest
     */
   private def toSdkRequest(request: HttpRequest): SdkHttpFullRequest = {
     val content: InputStream = request.entity.dataBytes.runWith(StreamConverters.asInputStream())
@@ -89,8 +96,10 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
 
   /** Extracts the headers from the `SdkHttpFullRequest` as collection of Akka's `HttpHeader`s
     *
-    * @param signedSdkRequest `SdkHttpFullRequest` after signing
-    * @return `Seq[HttpHeader]` of the signedSdkRequest
+    * @param signedSdkRequest
+    *   `SdkHttpFullRequest` after signing
+    * @return
+    *   `Seq[HttpHeader]` of the signedSdkRequest
     */
   private def getSdkHeaders(signedSdkRequest: SdkHttpFullRequest): scala.collection.immutable.Seq[HttpHeader] =
     signedSdkRequest
@@ -117,9 +126,12 @@ object AwsRequestSigner extends StrictLogging {
 
   /** Construct an `AwsRequestSigner` from the given configuration.
     *
-    * @param config `AwsRequestSignerConfig` to be used to construct one of the three config providers
-    * @param mat    `Materializer` on which the `Future`s run
-    * @return `AwsRequestSigner`
+    * @param config
+    *   `AwsRequestSignerConfig` to be used to construct one of the three config providers
+    * @param mat
+    *   `Materializer` on which the `Future`s run
+    * @return
+    *   `AwsRequestSigner`
     */
   def fromConfig(config: AwsRequestSignerConfig)(implicit mat: Materializer): AwsRequestSigner =
     config match {

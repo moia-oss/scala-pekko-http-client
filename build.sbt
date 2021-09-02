@@ -92,7 +92,8 @@ lazy val scalacOptions_2_13 = Seq(
   "-Xfatal-warnings",
   "-Xlint:strict-unsealed-patmat",
   "-Ymacro-annotations",
-  "-Ywarn-dead-code"
+  "-Ywarn-dead-code",
+  "-Xsource:3"
 )
 
 lazy val sonatypeSettings = {

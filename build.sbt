@@ -63,7 +63,7 @@ lazy val scalaDependencies = Seq(
   "org.scala-lang.modules" %% "scala-collection-compat" % "2.5.0"
 )
 
-ThisBuild / scapegoatVersion := "1.4.9"
+ThisBuild / scapegoatVersion := "1.4.10"
 
 lazy val scalacOptions_2_12 = Seq(
   "-unchecked",

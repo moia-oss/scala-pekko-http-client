@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
     scmInfo := Some(ScmInfo(url("https://github.com/moia-oss/scala-http-client"), "scm:git@github.com:moia-oss/scala-http-client.git")),
     homepage := Some(url("https://github.com/moia-oss/scala-http-client")),
     scalaVersion := "2.13.6",
-    crossScalaVersions := List("2.12.14", "2.13.6"),
+    crossScalaVersions := List("2.12.15", "2.13.6"),
     versionScheme := Some("early-semver"),
     scalacOptions ++= {
       CrossVersion.partialVersion(scalaVersion.value) match {

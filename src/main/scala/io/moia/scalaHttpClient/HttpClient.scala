@@ -176,7 +176,7 @@ abstract class HttpLayer[LoggingContext](
       akka.pattern.after(delay)(executeRequest(request, tryNum + 1, deadline))
     case NonFatal(e) =>
       logger.warn(s"[$name] Exception in request: ${e.getMessage}, retries exhausted, giving up.", e)
-      Future.successful(DeadlineExpired(None))
+      Future.successful(ExceptionOccurred(e))
   }
 
   private[this] def logRequest[T](implicit ctx: LoggingContext): PartialFunction[Try[HttpRequest], Unit] = { case Success(request) =>
@@ -211,4 +211,4 @@ final case class HttpClientError(content: HttpResponse) extends HttpClientFailur
 
 final case class DeadlineExpired(content: Option[HttpResponse] = None) extends HttpClientFailure
 
-final case class ExceptionOccurred(exception: Exception) extends HttpClientFailure
+final case class ExceptionOccurred(exception: Throwable) extends HttpClientFailure

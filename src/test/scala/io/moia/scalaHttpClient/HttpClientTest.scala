@@ -141,6 +141,22 @@ class HttpClientTest extends TestSetup with Inside with StrictLogging {
       capturedRequest2.future.futureValue.entity should ===(entity)
       capturedRequest3.future.futureValue.entity should ===(entity)
     }
+
+    "return SSL errors" in {
+      val wrongHttpClientConfig: HttpClientConfig = HttpClientConfig("https", "127.0.0.1", 18888)
+
+      val testHttpClient = new HttpClient(httpClientConfig, "TestGateway", httpMetrics, retryConfig, clock, None) {
+        override def sendRequest(req: HttpRequest): Future[HttpResponse] =
+          Future.failed(new javax.net.ssl.SSLException("Unrecognized SSL message, plaintext connection?"))
+      }
+
+      // When
+      val result: Future[HttpClientResponse] =
+        testHttpClient.request(HttpMethods.POST, HttpEntity.Empty, "/test", immutable.Seq.empty, Deadline.now + 10.seconds)
+
+      // Then
+      result.futureValue shouldBe a[ExceptionOccurred]
+    }
   }
 
   private[this] def dummyRequestWithFixResponseStatus(status: StatusCode): HttpClientResponse =

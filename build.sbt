@@ -122,5 +122,5 @@ lazy val sbtGitSettings = Seq(
 )
 
 lazy val mimaSettings = Seq(
-  mimaPreviousArtifacts := Set.empty // ("io.moia" %% "scala-http-client" % "5.0.0")
+  mimaPreviousArtifacts := Set("io.moia" %% "scala-http-client" % "5.0.0")
 )

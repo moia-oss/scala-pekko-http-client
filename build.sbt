@@ -2,11 +2,11 @@ lazy val root = (project in file("."))
   .settings(
     name := "scala-http-client",
     organization := "io.moia",
-    licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
+    licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0")),
     scmInfo := Some(ScmInfo(url("https://github.com/moia-oss/scala-http-client"), "scm:git@github.com:moia-oss/scala-http-client.git")),
     homepage := Some(url("https://github.com/moia-oss/scala-http-client")),
-    scalaVersion := "2.13.6",
-    crossScalaVersions := List("2.12.15", "2.13.6"),
+    scalaVersion := "2.13.7",
+    crossScalaVersions := List("2.12.15", "2.13.7"),
     versionScheme := Some("early-semver"),
     scalacOptions ++= {
       CrossVersion.partialVersion(scalaVersion.value) match {
@@ -31,7 +31,7 @@ lazy val root = (project in file("."))
   )
   .settings(mimaSettings)
 
-val akkaVersion     = "2.6.17"
+val akkaVersion     = "2.6.18"
 val akkaHttpVersion = "10.2.7"
 
 lazy val akkaDependencies = Seq(
@@ -42,7 +42,7 @@ lazy val akkaDependencies = Seq(
   "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test
 )
 
-lazy val awsJavaSdkVersion = "2.17.38"
+lazy val awsJavaSdkVersion = "2.17.102"
 lazy val awsDependencies = Seq(
   "software.amazon.awssdk" % "core" % awsJavaSdkVersion,
   "software.amazon.awssdk" % "sts"  % awsJavaSdkVersion
@@ -50,13 +50,13 @@ lazy val awsDependencies = Seq(
 
 lazy val testDependencies = Seq(
   "org.scalatest"  %% "scalatest"        % "3.2.10"  % Test,
-  "org.mockito"    %% "mockito-scala"    % "1.16.46" % Test,
+  "org.mockito"    %% "mockito-scala"    % "1.16.49" % Test,
   "org.mock-server" % "mockserver-netty" % "5.11.2"  % Test
 )
 
 lazy val loggingDependencies = Seq(
   "com.typesafe.scala-logging" %% "scala-logging"   % "3.9.4",
-  "ch.qos.logback"              % "logback-classic" % "1.2.7" % Test
+  "ch.qos.logback"              % "logback-classic" % "1.2.10" % Test
 )
 
 lazy val scalaDependencies = Seq(

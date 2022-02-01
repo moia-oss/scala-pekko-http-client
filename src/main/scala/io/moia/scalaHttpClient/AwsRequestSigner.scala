@@ -105,8 +105,7 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
     signedSdkRequest
       .headers()
       .asScala
-      .toSeq
-      .map(h => HttpHeader.parse(h._1, h._2.asScala.head))
+      .flatMap(header => header._2.asScala.headOption.map(value => HttpHeader.parse(header._1, value)))
       .collect { case ParsingResult.Ok(header, _) =>
         header
       }
@@ -118,9 +117,7 @@ object AwsRequestSigner extends StrictLogging {
 
   object AwsRequestSignerConfig {
     final case class AssumeRole(roleArn: String, roleSessionName: String, awsRegion: String) extends AwsRequestSignerConfig
-
     final case class BasicCredentials(accessKey: String, secretKey: String, awsRegion: String) extends AwsRequestSignerConfig
-
     final case class Instance(awsRegion: String) extends AwsRequestSignerConfig
   }
 

@@ -133,7 +133,7 @@ object AwsRequestSigner extends StrictLogging {
   def fromConfig(config: AwsRequestSignerConfig)(implicit mat: Materializer): AwsRequestSigner =
     config match {
       case AwsRequestSignerConfig.Instance(awsRegion) =>
-        val provider = InstanceProfileCredentialsProvider.create()
+        val provider = InstanceProfileCredentialsProvider.builder().asyncCredentialUpdateEnabled(true).build()
         new AwsRequestSigner(provider, awsRegion)
       case AwsRequestSignerConfig.AssumeRole(roleArn, roleSessionName, awsRegion) =>
         logger.info(s"Assuming role from config $config.")

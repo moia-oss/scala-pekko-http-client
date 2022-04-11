@@ -16,4 +16,4 @@ addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.1.2")
 addSbtPlugin("com.github.sbt" % "sbt-git" % "2.0.0")
 
 // sbt> mimaReportBinaryIssues
-addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.0.1")
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.1.0")

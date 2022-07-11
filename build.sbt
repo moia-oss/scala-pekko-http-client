@@ -60,7 +60,7 @@ lazy val loggingDependencies = Seq(
 )
 
 lazy val scalaDependencies = Seq(
-  "org.scala-lang.modules" %% "scala-collection-compat" % "2.7.0"
+  "org.scala-lang.modules" %% "scala-collection-compat" % "2.8.0"
 )
 
 ThisBuild / scapegoatVersion := "1.4.15"

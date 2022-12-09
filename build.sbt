@@ -56,7 +56,7 @@ lazy val testDependencies = Seq(
 
 lazy val loggingDependencies = Seq(
   "com.typesafe.scala-logging" %% "scala-logging"   % "3.9.5",
-  "ch.qos.logback"              % "logback-classic" % "1.2.11" % Test
+  "ch.qos.logback"              % "logback-classic" % "1.4.4" % Test
 )
 
 lazy val scalaDependencies = Seq(

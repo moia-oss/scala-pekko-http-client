@@ -1,10 +1,11 @@
 package io.moia.scalaHttpClient
 
-import akka.actor.typed.ActorSystem
-import akka.http.scaladsl.Http
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.model.headers.{`Retry-After`, RetryAfterDateTime, RetryAfterDuration}
 import com.typesafe.scalalogging.{Logger, LoggerTakingImplicit}
+import org.apache.pekko.actor.typed.ActorSystem
+import org.apache.pekko.http.scaladsl.Http
+import org.apache.pekko.http.scaladsl.model._
+import org.apache.pekko.http.scaladsl.model.headers.{`Retry-After`, RetryAfterDateTime, RetryAfterDuration}
+import org.apache.pekko.pattern.after
 import org.slf4j.LoggerFactory
 
 import java.time.Clock
@@ -148,7 +149,7 @@ abstract class HttpLayer[LoggingContext](
         Future.successful(DeadlineExpired(Some(response)))
       } else {
         logger.info(s"[$name] Try #$tryNum: Retrying in ${delay.toMillis}ms.")
-        akka.pattern.after(delay)(executeRequest(request, tryNum + 1, deadline))
+        after(delay)(executeRequest(request, tryNum + 1, deadline))
       }
     } else {
       logger.info(s"[$name] Try #$tryNum: No retries left. Giving up.")
@@ -173,7 +174,7 @@ abstract class HttpLayer[LoggingContext](
     case NonFatal(e) if tryNum <= retryConfig.retriesException =>
       val delay: FiniteDuration = calculateDelay(None, tryNum)
       logger.info(s"[$name] Exception in request: ${e.getMessage}, retrying in ${delay.toMillis}ms.", e)
-      akka.pattern.after(delay)(executeRequest(request, tryNum + 1, deadline))
+      after(delay)(executeRequest(request, tryNum + 1, deadline))
     case NonFatal(e) =>
       logger.warn(s"[$name] Exception in request: ${e.getMessage}, retries exhausted, giving up.", e)
       Future.successful(ExceptionOccurred(e))

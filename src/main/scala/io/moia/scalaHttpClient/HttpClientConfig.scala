@@ -39,7 +39,7 @@ final case class HttpClientConfig(
   * @param retriesServerError
   *   Number of retries for all other 5xx codes
   * @param retriesException
-  *   Number of retries for exceptions in the underlying akka-http client
+  *   Number of retries for exceptions in the underlying pekko-http client
   * @param initialBackoff
   *   Time to wait until the first retry. Is multiplied with 2^(# of retry). Example: 10ms * 2^0 => 10ms 10ms * 2^1 => 20ms 10ms * 2^2 => 40ms 10ms * 2^3 =>
   *   80ms 10ms * 2^4 => 160ms

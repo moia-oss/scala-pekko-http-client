@@ -1,6 +1,6 @@
 package io.moia.scalaHttpClient
 
-import akka.http.scaladsl.model._
+import org.apache.pekko.http.scaladsl.model._
 import org.mockserver.matchers.Times
 import org.mockserver.model.HttpRequest.request
 import org.mockserver.model.HttpResponse.response

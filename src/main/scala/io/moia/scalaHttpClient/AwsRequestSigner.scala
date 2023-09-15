@@ -1,9 +1,9 @@
 package io.moia.scalaHttpClient
 
-import akka.http.scaladsl.model.HttpHeader.ParsingResult
-import akka.http.scaladsl.model.{HttpHeader, HttpRequest, Uri}
-import akka.stream.Materializer
-import akka.stream.scaladsl.StreamConverters
+import org.apache.pekko.http.scaladsl.model.HttpHeader.ParsingResult
+import org.apache.pekko.http.scaladsl.model.{HttpHeader, HttpRequest, Uri}
+import org.apache.pekko.stream.Materializer
+import org.apache.pekko.stream.scaladsl.StreamConverters
 import com.typesafe.scalalogging.StrictLogging
 import software.amazon.awssdk.auth.credentials._
 import software.amazon.awssdk.auth.signer.{Aws4Signer, AwsSignerExecutionAttribute}
@@ -57,13 +57,13 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
   /** Checks if the given collection of `HttpHeader`s includes one "Authorization" header
     *
     * @param headers
-    *   `Seq[HttpHeader]` headers of an Akka `HttpRequest`
+    *   `Seq[HttpHeader]` headers of a Pekko `HttpRequest`
     * @return
     *   true if "Authorization" header exists
     */
   private def isAlreadyAuthorized(headers: Seq[HttpHeader]): Boolean = headers.exists(_.is("authorization"))
 
-  /** Constructs an `SdkHttpFullRequest` from Akka's `HttpRequest` for signing.
+  /** Constructs an `SdkHttpFullRequest` from Pekko's `HttpRequest` for signing.
     *
     * @param request
     *   HttpRequest to convert
@@ -94,7 +94,7 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
       .build()
   }
 
-  /** Extracts the headers from the `SdkHttpFullRequest` as collection of Akka's `HttpHeader`s
+  /** Extracts the headers from the `SdkHttpFullRequest` as collection of Pekko's `HttpHeader`s
     *
     * @param signedSdkRequest
     *   `SdkHttpFullRequest` after signing

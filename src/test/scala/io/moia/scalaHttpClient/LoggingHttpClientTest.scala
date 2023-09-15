@@ -1,6 +1,6 @@
 package io.moia.scalaHttpClient
 
-import akka.http.scaladsl.model._
+import org.apache.pekko.http.scaladsl.model._
 import com.typesafe.scalalogging.{CanLog, Logger, LoggerTakingImplicit}
 import org.slf4j.{LoggerFactory, MDC}
 

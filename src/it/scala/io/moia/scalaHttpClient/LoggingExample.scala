@@ -1,8 +1,8 @@
 package io.moia.scalaHttpClient
 
-import akka.actor.typed.ActorSystem
-import akka.actor.typed.scaladsl.Behaviors
-import akka.http.scaladsl.model._
+import org.apache.pekko.actor.typed.ActorSystem
+import org.apache.pekko.actor.typed.scaladsl.Behaviors
+import org.apache.pekko.http.scaladsl.model._
 import com.typesafe.scalalogging._
 import io.moia.scalaHttpClient.CustomLogging.LoggingContext
 import org.slf4j.LoggerFactory

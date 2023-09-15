@@ -1,8 +1,8 @@
 package io.moia.scalaHttpClient
 
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.model.headers.{ModeledCustomHeader, ModeledCustomHeaderCompanion}
-import akka.http.scaladsl.unmarshalling.Unmarshal
+import org.apache.pekko.http.scaladsl.model._
+import org.apache.pekko.http.scaladsl.model.headers.{ModeledCustomHeader, ModeledCustomHeaderCompanion}
+import org.apache.pekko.http.scaladsl.unmarshalling.Unmarshal
 import com.typesafe.scalalogging.StrictLogging
 import io.moia.scalaHttpClient.AwsRequestSigner.AwsRequestSignerConfig
 import org.scalatest.{Inside, Inspectors}

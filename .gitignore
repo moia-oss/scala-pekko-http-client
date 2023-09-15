@@ -32,9 +32,6 @@ native/
 # Log files
 *.log
 
-# Akka Persistence
-snapshots
-
 # jenv
 .java-version
 .bloop

@@ -1,6 +1,6 @@
-# Scala-HTTP-Client
+# Scala-Pekko-HTTP-Client
 
-This is a wrapper around the akka-http-client that adds
+This is a wrapper around the pekko-http-client that adds
 
 * handling for domain errors as HTTP 400 returns
 * retry logic
@@ -9,14 +9,14 @@ This is a wrapper around the akka-http-client that adds
 * logging
 * AWS request signing
 
-![Build & Test](https://github.com/moia-oss/scala-http-client/workflows/Build%20&%20Test/badge.svg)
-[![Scala 2.13](https://img.shields.io/maven-central/v/io.moia/scala-http-client_2.13.svg)](https://search.maven.org/search?q=scala-http-client_2.13)
+![Build & Test](https://github.com/moia-oss/scala-pekko-http-client/workflows/Build%20&%20Test/badge.svg)
+[![Scala 2.13](https://img.shields.io/maven-central/v/io.moia/scala-pekko-http-client_2.13.svg)](https://search.maven.org/search?q=scala-pekko-http-client_2.13)
 [![Scala Steward badge](https://img.shields.io/badge/Scala_Steward-helping-blue.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xwmckutAR1nkm4ggbyEcg/wWmlGLDAA3oL50xi6fk5ffZ3E2E3QfZDCcCN2YtbEWZt+Drc6u6rlqv7Uk0LdKqqr5rk2UCRXOk0vmQKGfc94nOJyQjouF9H/wCc9gECEYfONoAAAAASUVORK5CYII=)](https://scala-steward.org)
 
 ## Usage
 
 ```sbt
-libraryDependencies += "io.moia" %% "scala-http-client" % "5.0.0"
+libraryDependencies += "io.moia" %% "scala-pekko-http-client" % "1.0.0"
 ```
 
 ```scala
@@ -58,7 +58,7 @@ The lib outputs the following response objects (see `io.moia.scalaHttpClient.Htt
 * HTTP 4xx, 5xx, others => `HttpClientError`
 * if the deadline expired => `DeadlineExpired`
 * if an `AwsRequestSigner` is given, but the request already includes an "Authorization" header => `AlreadyAuthorizedException`
-* weird akka-errors => `ExceptionOccurred`
+* weird pekko-errors => `ExceptionOccurred`
 
 
 ## Custom Logging
@@ -110,10 +110,10 @@ See [LoggingExample.scala](/src/it/scala/io/moia/scalaHttpClient/LoggingExample.
 
 ## Custom Headers
 
-To use custom-defined headers, you can extend `ModeledCustomHeader` from `akka.http.scaladsl.model.headers`:
+To use custom-defined headers, you can extend `ModeledCustomHeader` from `org.apache.pekko.http.scaladsl.model.headers`:
 
 ```scala
-import akka.http.scaladsl.model.headers.{ModeledCustomHeader, ModeledCustomHeaderCompanion}
+import org.apache.pekko.http.scaladsl.model.headers.{ModeledCustomHeader, ModeledCustomHeaderCompanion}
 import scala.util.Try
 
 final class CustomHeader(id: String) extends ModeledCustomHeader[CustomHeader] {
@@ -150,18 +150,18 @@ See [HeaderExample.scala](/src/it/scala/io/moia/scalaHttpClient/HeaderExample.sc
 
 ## Publishing
 
-[Tag](https://github.com/moia-oss/scala-http-client/tags) the new version (e.g. `v5.0.0`) and push the tags (`git push origin --tags`).
+[Tag](https://github.com/moia-oss/scala-pekko-http-client/tags) the new version (e.g. `v1.0.0`) and push the tags (`git push origin --tags`).
 
 You need a [public GPG key](https://www.scala-sbt.org/release/docs/Using-Sonatype.html) with your MOIA email and an account on https://oss.sonatype.org that can [access](https://issues.sonatype.org/browse/OSSRH-52948) the `io.moia` group.
 
 Add your credentials to `~/.sbt/sonatype_credential` and run
 ```sbt
-sbt:scala-http-client> +publishSigned
+sbt:scala-pekko-http-client> +publishSigned
 ```
 
 Then close and release the [repository](https://oss.sonatype.org/#stagingRepositories).
 ```
-sbt:scala-http-client> +sonatypeRelease
+sbt:scala-pekko-http-client> +sonatypeRelease
 ```
 
-Afterwards, add the release to [GitHub](https://github.com/moia-oss/scala-http-client/releases).
+Afterwards, add the release to [GitHub](https://github.com/moia-oss/scala-pekko-http-client/releases).

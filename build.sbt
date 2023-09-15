@@ -1,10 +1,10 @@
 lazy val root = (project in file("."))
   .settings(
-    name := "scala-http-client",
+    name := "scala-pekko-http-client",
     organization := "io.moia",
     licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0")),
-    scmInfo := Some(ScmInfo(url("https://github.com/moia-oss/scala-http-client"), "scm:git@github.com:moia-oss/scala-http-client.git")),
-    homepage := Some(url("https://github.com/moia-oss/scala-http-client")),
+    scmInfo := Some(ScmInfo(url("https://github.com/moia-oss/scala-pekko-http-client"), "scm:git@github.com:moia-oss/scala-pekko-http-client.git")),
+    homepage := Some(url("https://github.com/moia-oss/scala-pekko-http-client")),
     scalaVersion := "2.13.11",
     crossScalaVersions := List("2.12.18", "2.13.11"),
     versionScheme := Some("early-semver"),
@@ -15,7 +15,7 @@ lazy val root = (project in file("."))
         case _             => Seq()
       }
     },
-    libraryDependencies ++= akkaDependencies ++ awsDependencies ++ testDependencies ++ loggingDependencies ++ scalaDependencies
+    libraryDependencies ++= pekkoDependencies ++ awsDependencies ++ testDependencies ++ loggingDependencies ++ scalaDependencies
   )
   .settings(sonatypeSettings: _*)
   .configs(IntegrationTest)
@@ -31,15 +31,15 @@ lazy val root = (project in file("."))
   )
   .settings(mimaSettings)
 
-val akkaVersion     = "2.6.19"
-val akkaHttpVersion = "10.2.10"
+val pekkoVersion     = "1.0.1"
+val pekkoHttpVersion = "1.0.0"
 
-lazy val akkaDependencies = Seq(
-  "com.typesafe.akka" %% "akka-stream"       % akkaVersion,
-  "com.typesafe.akka" %% "akka-stream-typed" % akkaVersion,
-  "com.typesafe.akka" %% "akka-http"         % akkaHttpVersion,
-  "com.typesafe.akka" %% "akka-testkit"      % akkaVersion     % Test,
-  "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test
+lazy val pekkoDependencies = Seq(
+  "org.apache.pekko" %% "pekko-stream"       % pekkoVersion,
+  "org.apache.pekko" %% "pekko-stream-typed" % pekkoVersion,
+  "org.apache.pekko" %% "pekko-http"         % pekkoHttpVersion,
+  "org.apache.pekko" %% "pekko-testkit"      % pekkoVersion     % Test,
+  "org.apache.pekko" %% "pekko-http-testkit" % pekkoHttpVersion % Test
 )
 
 lazy val awsJavaSdkVersion = "2.20.144"
@@ -104,7 +104,7 @@ lazy val sonatypeSettings = {
     publishTo := sonatypePublishTo.value,
     sonatypeProfileName := organization.value,
     publishMavenStyle := true,
-    sonatypeProjectHosting := Some(GitHubHosting("moia-oss", "scala-http-client", "oss-support@moia.io")),
+    sonatypeProjectHosting := Some(GitHubHosting("moia-oss", "scala-pekko-http-client", "oss-support@moia.io")),
     credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credential")
   )
 }
@@ -124,5 +124,5 @@ lazy val sbtGitSettings = Seq(
 )
 
 lazy val mimaSettings = Seq(
-  mimaPreviousArtifacts := Set("io.moia" %% "scala-http-client" % "5.0.0")
+  mimaPreviousArtifacts := Set("io.moia" %% "scala-pekko-http-client" % "1.0.0")
 )

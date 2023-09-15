@@ -1,9 +1,9 @@
 package io.moia.scalaHttpClient
 
-import akka.http.scaladsl.model.HttpHeader.ParsingResult
-import akka.http.scaladsl.model.{HttpHeader, HttpRequest, Uri}
-import akka.stream.Materializer
-import akka.stream.scaladsl.StreamConverters
+import org.apache.pekko.http.scaladsl.model.HttpHeader.ParsingResult
+import org.apache.pekko.http.scaladsl.model.{HttpHeader, HttpRequest, Uri}
+import org.apache.pekko.stream.Materializer
+import org.apache.pekko.stream.scaladsl.StreamConverters
 import com.typesafe.scalalogging.StrictLogging
 import software.amazon.awssdk.auth.credentials._
 import software.amazon.awssdk.auth.signer.{Aws4Signer, AwsSignerExecutionAttribute}

@@ -1,9 +1,9 @@
 package io.moia.scalaHttpClient
 
 import java.time.Clock
-import akka.actor.typed.ActorSystem
-import akka.actor.typed.scaladsl.Behaviors
-import akka.http.scaladsl.model.{HttpMethod, HttpResponse, Uri}
+import org.apache.pekko.actor.typed.ActorSystem
+import org.apache.pekko.actor.typed.scaladsl.Behaviors
+import org.apache.pekko.http.scaladsl.model.{HttpMethod, HttpResponse, Uri}
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 

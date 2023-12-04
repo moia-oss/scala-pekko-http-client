@@ -31,7 +31,7 @@ lazy val root = (project in file("."))
   )
   .settings(mimaSettings)
 
-val pekkoVersion     = "1.0.1"
+val pekkoVersion     = "1.0.2"
 val pekkoHttpVersion = "1.0.0"
 
 lazy val pekkoDependencies = Seq(

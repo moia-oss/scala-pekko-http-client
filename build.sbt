@@ -5,8 +5,8 @@ lazy val root = (project in file("."))
     licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0")),
     scmInfo := Some(ScmInfo(url("https://github.com/moia-oss/scala-pekko-http-client"), "scm:git@github.com:moia-oss/scala-pekko-http-client.git")),
     homepage := Some(url("https://github.com/moia-oss/scala-pekko-http-client")),
-    scalaVersion := "2.13.12",
-    crossScalaVersions := List("2.12.19", "2.13.12"),
+    scalaVersion := "2.13.13",
+    crossScalaVersions := List("2.12.19", "2.13.13"),
     versionScheme := Some("early-semver"),
     scalacOptions ++= {
       CrossVersion.partialVersion(scalaVersion.value) match {
@@ -42,7 +42,7 @@ lazy val pekkoDependencies = Seq(
   "org.apache.pekko" %% "pekko-http-testkit" % pekkoHttpVersion % Test
 )
 
-lazy val awsJavaSdkVersion = "2.24.10"
+lazy val awsJavaSdkVersion = "2.24.13"
 lazy val awsDependencies = Seq(
   "software.amazon.awssdk" % "core" % awsJavaSdkVersion,
   "software.amazon.awssdk" % "sts"  % awsJavaSdkVersion
@@ -56,14 +56,14 @@ lazy val testDependencies = Seq(
 
 lazy val loggingDependencies = Seq(
   "com.typesafe.scala-logging" %% "scala-logging"   % "3.9.5",
-  "ch.qos.logback"              % "logback-classic" % "1.5.0" % Test
+  "ch.qos.logback"              % "logback-classic" % "1.5.2" % Test
 )
 
 lazy val scalaDependencies = Seq(
   "org.scala-lang.modules" %% "scala-collection-compat" % "2.11.0"
 )
 
-ThisBuild / scapegoatVersion := "2.1.4"
+ThisBuild / scapegoatVersion := "2.1.5"
 
 lazy val scalacOptions_2_12 = Seq(
   "-unchecked",

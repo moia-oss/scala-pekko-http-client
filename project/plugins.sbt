@@ -13,7 +13,7 @@ addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.11.3")
 // publishSigned
 addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.3.0")
 
-addSbtPlugin("com.github.sbt" % "sbt-git" % "2.0.1")
+addSbtPlugin("com.github.sbt" % "sbt-git" % "2.1.0")
 
 // sbt> mimaReportBinaryIssues
 addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.1.4")

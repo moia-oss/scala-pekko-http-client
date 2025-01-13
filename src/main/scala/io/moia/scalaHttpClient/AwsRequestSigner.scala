@@ -54,7 +54,7 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
         HttpRequest(request.method, uri = Uri(signedSdkRequest.getUri.toString), getSdkHeaders(signedSdkRequest), request.entity)
       }(mat.executionContext)
 
-  /** Checks if the given collection of `HttpHeader`s includes one "Authorization" header
+  /** Checks if the given collection of `HttpHeader` s includes one "Authorization" header
     *
     * @param headers
     *   `Seq[HttpHeader]` headers of a Pekko `HttpRequest`
@@ -94,7 +94,7 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
       .build()
   }
 
-  /** Extracts the headers from the `SdkHttpFullRequest` as collection of Pekko's `HttpHeader`s
+  /** Extracts the headers from the `SdkHttpFullRequest` as collection of Pekko's `HttpHeader` s
     *
     * @param signedSdkRequest
     *   `SdkHttpFullRequest` after signing
@@ -126,7 +126,7 @@ object AwsRequestSigner extends StrictLogging {
     * @param config
     *   `AwsRequestSignerConfig` to be used to construct one of the three config providers
     * @param mat
-    *   `Materializer` on which the `Future`s run
+    *   `Materializer` on which the `Future` s run
     * @return
     *   `AwsRequestSigner`
     */

@@ -2,7 +2,7 @@
 addSbtPlugin("io.spray" % "sbt-revolver" % "0.10.0")
 
 // adds scalafmt
-addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.2")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.4")
 
 // sbt> scapegoat
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.2.9")

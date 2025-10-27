@@ -13,7 +13,7 @@ trait TestSetup extends AnyWordSpecLike with Matchers with FutureValues {
   implicit val system: ActorSystem[_]             = ActorSystem(Behaviors.empty, "test")
   implicit val executionContext: ExecutionContext = system.executionContext
 
-  val clock: Clock = Clock.systemUTC()
+  val clock: Clock                               = Clock.systemUTC()
   val httpMetrics: HttpMetrics[NoLoggingContext] = new HttpMetrics[NoLoggingContext] {
     override def meterResponse(method: HttpMethod, path: Uri.Path, response: HttpResponse)(implicit ctx: NoLoggingContext): Unit = ()
   }

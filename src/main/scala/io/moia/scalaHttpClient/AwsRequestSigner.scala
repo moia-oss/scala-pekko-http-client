@@ -23,7 +23,7 @@ import scala.concurrent.{blocking, Future}
 import scala.jdk.CollectionConverters._
 
 class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, region: String)(implicit mat: Materializer) extends StrictLogging {
-  private val awsSigner = Aws4Signer.create()
+  private val awsSigner           = Aws4Signer.create()
   private val executionAttributes = new ExecutionAttributes()
     .putAttribute(AwsSignerExecutionAttribute.SERVICE_SIGNING_NAME, "execute-api")
     .putAttribute(AwsSignerExecutionAttribute.SIGNING_REGION, Region.of(region))
@@ -71,7 +71,7 @@ class AwsRequestSigner private (credentialsProvider: AwsCredentialsProvider, reg
     *   SdkHttpFullRequest
     */
   private def toSdkRequest(request: HttpRequest): SdkHttpFullRequest = {
-    val content: InputStream = request.entity.dataBytes.runWith(StreamConverters.asInputStream())
+    val content: InputStream                         = request.entity.dataBytes.runWith(StreamConverters.asInputStream())
     val headers: util.Map[String, util.List[String]] =
       request.headers.groupBy(_.name).view.mapValues(_.map(_.value)).map(h => h._1 -> h._2.toList.asJava).toMap.asJava
     val query: util.Map[String, util.List[String]] =

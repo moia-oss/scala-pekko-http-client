@@ -32,7 +32,7 @@ lazy val root = (project in file("."))
   .settings(mimaSettings)
 
 val pekkoVersion     = "1.2.1"
-val pekkoHttpVersion = "1.2.0"
+val pekkoHttpVersion = "1.3.0"
 
 lazy val pekkoDependencies = Seq(
   "org.apache.pekko" %% "pekko-stream"       % pekkoVersion,
@@ -63,7 +63,7 @@ lazy val scalaDependencies = Seq(
   "org.scala-lang.modules" %% "scala-collection-compat" % "2.14.0"
 )
 
-ThisBuild / scapegoatVersion := "3.1.9"
+ThisBuild / scapegoatVersion := "3.2.2"
 
 lazy val scalacOptions_2_12 = Seq(
   "-unchecked",

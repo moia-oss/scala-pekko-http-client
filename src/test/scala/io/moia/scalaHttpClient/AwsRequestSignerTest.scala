@@ -31,7 +31,7 @@ class AwsRequestSignerTest extends AnyWordSpecLike with Matchers with FutureValu
       val unsignedRequest: HttpRequest = HttpRequest(uri = Uri(s"https://www.moia.io/?Param1=value1&Param2=value2"))
 
       val result: HttpRequest = underTest.signRequest(unsignedRequest).futureValue
-      val regex =
+      val regex               =
         "AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/[0-9]{8}/eu-central-1/execute-api/aws4_request, SignedHeaders=host;x-amz-date, Signature=.*"
 
       result.headers.find(_.name() == "Authorization").map(_.value()) should not be empty

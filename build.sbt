@@ -43,7 +43,7 @@ lazy val pekkoDependencies = Seq(
 )
 
 lazy val awsJavaSdkVersion = "2.35.11"
-lazy val awsDependencies = Seq(
+lazy val awsDependencies   = Seq(
   "software.amazon.awssdk" % "core" % awsJavaSdkVersion,
   "software.amazon.awssdk" % "sts"  % awsJavaSdkVersion
 )

@@ -1,3 +1,6 @@
+>[!WARNING]
+> Unmaintained and archived on September 2nd 2026.
+
 # Scala-Pekko-HTTP-Client
 
 This is a wrapper around the pekko-http-client that adds
